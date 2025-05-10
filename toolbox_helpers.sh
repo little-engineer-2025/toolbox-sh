@@ -3,7 +3,7 @@
 # Helper to install vscode
 # https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions
 toolbox_helper_install_vscode() {
-  toolbox enter "${TOOLBOX}" <<EOF
+	toolbox enter "${TOOLBOX}" <<EOF
 # Add vscode repository
 curl -L -s -o /tmp/microsoft.asc "https://packages.microsoft.com/keys/microsoft.asc"
 sudo rpm --import /tmp/microsoft.asc
@@ -16,9 +16,9 @@ EOF
 }
 
 toolbox_helper_pip_install() {
-  if [ -e "requirements.txt" ]; then
-    # shellcheck disable=SC2154
-    toolbox enter "${TOOLBOX}" <<EOF
+	if [ -e "requirements.txt" ]; then
+		# shellcheck disable=SC2154
+		toolbox enter "${TOOLBOX}" <<EOF
 [ -e .venv ] || python3 -m venv .venv
 source .venv/bin/activate
 export http_proxy="${proxy}"
@@ -30,5 +30,5 @@ pip install -r requirements.txt
 }
 exit
 EOF
-  fi
+	fi
 }

@@ -10,6 +10,5 @@ source "${TOOLBOX_PROFILE_PATH}/toolbox.common.sh"
 
 # Sometimes python tools are used in the repository
 if [ -e "requirements.txt" ] || [ -e "requirements-dev.txt" ]; then
-  source "${TOOLBOX_PROFILE_PATH}/toolbox.python.sh"
+	source "${TOOLBOX_PROFILE_PATH}/toolbox.python.sh"
 fi
-

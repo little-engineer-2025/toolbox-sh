@@ -9,7 +9,7 @@ pkgs+=(make shellcheck)
 source "${TOOLBOX_PROFILE_PATH}/toolbox.common.sh"
 
 if [ -e "requirements.txt" ]; then
-  toolbox enter "${TOOLBOX}" <<EOF
+	toolbox enter "${TOOLBOX}" <<EOF
 [ -e .venv ] || python3 -m venv .venv
 source .venv/bin/activate
 export http_proxy="${proxy}"
@@ -28,4 +28,3 @@ toolbox enter "${TOOLBOX}" <<EOF
 sudo dnf install -y neovim --exclude=nodejs
 exit
 EOF
-

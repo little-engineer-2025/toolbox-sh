@@ -18,8 +18,8 @@
 
 # Check TOOLBOX is set
 if [ -z "${TOOLBOX}" ]; then
-  printf "error: TOOLBOX cannot be an empty string or unset\n" >&3
-  exit 1
+	printf "error: TOOLBOX cannot be an empty string or unset\n" >&3
+	exit 1
 fi
 
 source "${TOOLBOX_PROFILE_PATH}/toolbox_helpers.sh"
@@ -42,10 +42,9 @@ EOF
 # Install rpm packages
 pkgs+=(direnv pre-commit hadolint vim bat ripgrep silver)
 if [ "${#pkgs[@]}" -gt 0 ]; then
-  toolbox enter "${TOOLBOX}" <<EOF
+	toolbox enter "${TOOLBOX}" <<EOF
 # Install required packages
 sudo dnf install -y ${pkgs[@]}
 exit
 EOF
 fi
-

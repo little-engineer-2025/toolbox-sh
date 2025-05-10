@@ -7,4 +7,3 @@
 
 pkgs+=(cargo)
 source "${TOOLBOX_PROFILE_PATH}/toolbox.common.sh"
-
