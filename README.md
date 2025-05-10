@@ -92,7 +92,8 @@ in a repeatable way.
 
 ## Shell docs
 
-see: [toolbox.sh](docs/toolbox.md).
+- [toolbox.sh](docs/toolbox.md).
+- [toolbox_helpers.sh](docs/toolbox_helpers.md).
 
 ## Creating a new profile
 

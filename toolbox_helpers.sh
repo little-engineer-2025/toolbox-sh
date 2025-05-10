@@ -1,7 +1,16 @@
 #!/bin/bash
+#
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2025 Alejandro Visiedo <alejandro.visiedo@gmail.com>
+#
+# @filename toolbox_helpers.sh
+# @brief provide helpers function that are made available after include
+# the file `toolbox.common.sh`.
 
-# Helper to install vscode
-# https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions
+# @brief help to install vscode into the toolbox
+# This is intended to be invoked from your toolbox.sh custom file or
+# when creating a new profile.
+# see: https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions
 toolbox_helper_install_vscode() {
 	toolbox enter "${TOOLBOX}" <<EOF
 # Add vscode repository
@@ -15,6 +24,9 @@ sudo dnf install -y code
 EOF
 }
 
+# @brief help to install python dependencies into the
+# toolbox. This is intended to be invoked from yout toolbox.sh
+# custom file or when creating a new profile.
 toolbox_helper_pip_install() {
 	if [ -e "requirements.txt" ]; then
 		# shellcheck disable=SC2154
