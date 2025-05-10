@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: MIT
+# Copyright (c) 2025 Alejandro Visiedo <alejandro.visiedo@gmail.com>
 
 ##@ General
 
@@ -24,6 +25,7 @@ test:  ## run unit tests
 .PHONY: doc
 doc:  ## extract documentation from the shell scripts
 	shdoc < toolbox.sh > docs/toolbox.md
+	shdoc < toolbox_helpers.sh > docs/toolbox_helpers.md
 
 .PHONY: deps
 deps:  ## Install dependencies
