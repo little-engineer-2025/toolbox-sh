@@ -90,6 +90,10 @@ in a repeatable way.
 - Allow custom profiles on current directory.
 - Allow relaunch prepare statement.
 
+## Shell docs
+
+see: [toolbox.sh](docs/toolbox.md).
+
 ## Creating a new profile
 
 Just create a `toolbox.my-new-profile.sh` file and get
