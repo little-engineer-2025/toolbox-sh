@@ -175,7 +175,7 @@ toolbox-help() {
 toolbox.sh is a helper script which wrap 'toolbox' to prepare a specific
 toolbox for your needs.
 
-Usage: ./toolbox.sh { create | enter | help }
+Usage: ./toolbox.sh { help | install | profiles | create | prepare | enter | rm | localcfg }
   help     Display this content to provide guidelines about leverage this
            script.
   install  Install wrapper at ~/bin or ~/.local/bin to call this script.
