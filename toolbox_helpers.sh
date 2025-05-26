@@ -24,6 +24,16 @@ sudo dnf install -y code
 EOF
 }
 
+# @brief helper to install terraform in the toolbox.
+# see: https://developer.hashicorp.com/terraform/install
+toolbox_helper_install_terraform() {
+	toolbox enter "${TOOLBOX}" <<EOF
+sudo dnf install -y dnf-plugins-core
+sudo dnf config-manager addrepo --from-repofile="https://rpm.releases.hashicorp.com/fedora/hashicorp.repo"
+sudo dnf -y install terraform
+EOF
+}
+
 # @brief help to install python dependencies into the
 # toolbox. This is intended to be invoked from yout toolbox.sh
 # custom file or when creating a new profile.
