@@ -1,5 +1,5 @@
 # # @filename toolbox_helpers.sh
 
-help to install python dependencies into the
+help to install tito in the toolbox
 
 
