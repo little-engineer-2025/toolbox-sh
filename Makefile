@@ -19,7 +19,7 @@ lint:  ## Lint the shell scripts
 	shellcheck *.sh
 
 .PHONY: test
-test:  ## run unit tests
+test: deps  ## run unit tests
 	bats test
 
 .PHONY: doc
