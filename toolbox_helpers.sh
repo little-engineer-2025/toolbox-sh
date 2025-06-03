@@ -80,3 +80,13 @@ poetry install --no-root
 EOF
 	fi
 }
+
+# @description help to install tito in the toolbox
+toolbox_helper_tito_install() {
+	sudo dnf install python-devel asciidoc
+	[ ! -e .tito ] || {
+		tito build --rpm
+		# see what's in the package
+		rpm -ql -p /tmp/tito/noarch/tito-*.noarch.rpm
+	}
+}

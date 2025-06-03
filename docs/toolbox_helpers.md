@@ -15,6 +15,7 @@ see: https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-base
 * [toolbox_helper_install_terraform](#toolboxhelperinstallterraform)
 * [toolbox_helper_install_pip_requirements](#toolboxhelperinstallpiprequirements)
 * [toolbox_helper_install_poetry_deps](#toolboxhelperinstallpoetrydeps)
+* [toolbox_helper_tito_install](#toolboxhelpertitoinstall)
 
 ### toolbox_helper_install_vscode
 
@@ -41,4 +42,8 @@ exist.
 help to install python dependencies by using poetry.
 It only installs the dependencies if a pyproject.toml file exists.
 see: https://python-poetry.org/
+
+### toolbox_helper_tito_install
+
+help to install tito in the toolbox
 

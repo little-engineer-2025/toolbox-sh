@@ -31,3 +31,22 @@ doc:  ## extract documentation from the shell scripts
 deps:  ## Install dependencies
 	bash <(curl -s https://raw.githubusercontent.com/little-engineer-2025/shell-lib/refs/heads/main/retrieve.sh)
 
+.PHONY: pkg
+pkg:  ## Create linux distro package
+	echo "error: not implemented"; exit 1
+
+.PHONY: rpm-pkg
+rpm-pkg:
+	echo "error: not implemented"; exit 1
+
+.PHONY: rpm-deb
+rpm-deb:
+	echo "error: not implemented"; exit 1
+
+.PHONY: release
+release: all ## Create a new release
+	if [ $(shell git rev-list --count HEAD..origin/main) -ne 0 ]; then
+		echo "fatal: the HEAD branch is not the 'main' or 'master' branch."
+		exit 1
+	fi
+
