@@ -7,7 +7,7 @@
 # @brief provide helpers function that are made available after include
 # the file `toolbox.common.sh`.
 
-# @brief help to install vscode into the toolbox
+# @description help to install vscode into the toolbox
 # This is intended to be invoked from your toolbox.sh custom file or
 # when creating a new profile.
 # see: https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions
@@ -24,7 +24,7 @@ sudo dnf install -y code
 EOF
 }
 
-# @brief helper to install terraform in the toolbox.
+# @description helper to install terraform in the toolbox.
 # see: https://developer.hashicorp.com/terraform/install
 toolbox_helper_install_terraform() {
 	toolbox enter "${TOOLBOX}" <<EOF
@@ -34,9 +34,11 @@ sudo dnf -y install terraform
 EOF
 }
 
-# @brief help to install python dependencies into the
-# toolbox. This is intended to be invoked from yout toolbox.sh
-# custom file or when creating a new profile.
+# @description help to install python dependencies into the toolbox.
+# This is intended to be invoked from your toolbox.sh custom file or when
+# creating a new profile. It only install the dependencies in a .venv virtual
+# environment if the files requirements.txt or requirements-dev.txt files
+# exist.
 toolbox_helper_pip_install() {
 	if [ -e "requirements.txt" ]; then
 		# shellcheck disable=SC2154
