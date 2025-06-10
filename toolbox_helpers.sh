@@ -58,3 +58,19 @@ exit
 EOF
 	fi
 }
+
+# @description help to install python dependencies by using poetry.
+# It only installs the dependencies if a pyproject.toml file exists.
+# see: https://python-poetry.org/
+toolbox_helper_poetry_install() {
+	if [ -e "pyproject.toml" ]; then
+		# shellcheck disable=SC2154
+		toolbox enter "${TOOLBOX}" <<EOF
+if [ "${proxy}" != "" ]; then
+	export http_proxy="${proxy}"
+	export HTTPS_PROXY="${proxy}"
+fi
+poetry install --no-root
+EOF
+	fi
+}
