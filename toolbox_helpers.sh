@@ -45,8 +45,10 @@ toolbox_helper_pip_install() {
 		toolbox enter "${TOOLBOX}" <<EOF
 [ -e .venv ] || python3 -m venv .venv
 source .venv/bin/activate
-export http_proxy="${proxy}"
-export HTTPS_PROXY="${proxy}"
+if [ "${proxy}" != "" ]; then
+	export http_proxy="${proxy}"
+	export HTTPS_PROXY="${proxy}"
+fi
 pip install -U pip
 pip install -r requirements.txt
 [ ! -e requirements-dev.txt ] || {
