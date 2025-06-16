@@ -40,7 +40,7 @@ exit
 EOF
 
 # Install rpm packages
-pkgs+=(direnv pre-commit hadolint vim bat ripgrep powerline-go)
+pkgs+=(direnv pre-commit hadolint vim bat ripgrep)
 if [ "${#pkgs[@]}" -gt 0 ]; then
 	toolbox enter "${TOOLBOX}" <<EOF
 # Install required packages
