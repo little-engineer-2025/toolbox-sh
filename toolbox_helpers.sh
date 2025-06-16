@@ -39,7 +39,7 @@ EOF
 # creating a new profile. It only install the dependencies in a .venv virtual
 # environment if the files requirements.txt or requirements-dev.txt files
 # exist.
-toolbox_helper_pip_install() {
+toolbox_helper_install_pip_requirements() {
 	if [ -e "requirements.txt" ]; then
 		# shellcheck disable=SC2154
 		toolbox enter "${TOOLBOX}" <<EOF
@@ -59,10 +59,16 @@ EOF
 	fi
 }
 
+# @deprecated
+toolbox_helper_pip_install() {
+	printf "warning: 'toolbox_helper_pip_install' is deprecated; use 'toolbox_helper_install_pip_requirements' instead\n" >&2
+	toolbox_helper_install_pip_requirements "$@"
+}
+
 # @description help to install python dependencies by using poetry.
 # It only installs the dependencies if a pyproject.toml file exists.
 # see: https://python-poetry.org/
-toolbox_helper_poetry_install() {
+toolbox_helper_install_poetry_deps() {
 	if [ -e "pyproject.toml" ]; then
 		# shellcheck disable=SC2154
 		toolbox enter "${TOOLBOX}" <<EOF

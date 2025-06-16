@@ -9,5 +9,5 @@ pkgs+=(python3 poetry python3-spdx-tools)
 source "${TOOLBOX_PROFILE_PATH}/toolbox.common.sh"
 
 toolbox_helper_install_vscode
-toolbox_helper_pip_install
-toolbox_helper_poetry_install
+toolbox_helper_install_pip_requirements
+toolbox_helper_install_poetry_deps
