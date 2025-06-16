@@ -81,12 +81,36 @@ EOF
 	fi
 }
 
+# @deprecated
+toolbox_helper_poetry_install() {
+    printf "warning: 'toolbox_helper_poetry_install' is deprecated; use 'toolbox_helper_install_poetry_deps' instead\n" >&2
+    toolbox_helper_install_poetry_deps "$@"
+}
+
 # @description help to install tito in the toolbox
-toolbox_helper_tito_install() {
+toolbox_helper_install_tito() {
 	sudo dnf install python-devel asciidoc
 	[ ! -e .tito ] || {
 		tito build --rpm
 		# see what's in the package
 		rpm -ql -p /tmp/tito/noarch/tito-*.noarch.rpm
 	}
+}
+
+# @description help to install adr-tools in the toolbox
+toolbox_helper_install_adr_tools() {
+    local VERSION="3.0.0"
+    local URL="https://github.com/npryce/adr-tools/archive/refs/tags/${VERSION}.tar.gz"
+    toolbox enter "${TOOLBOX}" <<EOF
+if [ "${proxy}" != "" ]; then
+	export http_proxy="${proxy}"
+	export HTTPS_PROXY="${proxy}"
+fi
+curl -L -o /tmp/adr-tools.tar.gz "${URL}"
+sudo mkdir -p /opt
+sudo tar xzf /tmp/adr-tools.tar.gz -C /opt
+sudo ln -svf "adr-tools-${VERSION}" "/opt/adr-tools"
+sudo cp -vf /opt/adr-tools/src/* /usr/local/bin/
+sudo cp -vf /opt/adr-tools/autocomplete/adr /etc/bash_autocomplete.d
+EOF
 }
