@@ -71,7 +71,9 @@ toolbox-create() {
 	# Using os-release evoke creating the same release as the current host
 	# shellcheck disable=SC1091
 	source /etc/os-release
-	toolbox create -r "$VERSION_ID" "${TOOLBOX}" || {
+    TOOLBOX_RELEASE="${TOOLBOX_RELEASE:-${VERSION_ID}}"
+	echo toolbox create --release "${TOOLBOX_RELEASE}" "${TOOLBOX}"
+	toolbox create --release "${TOOLBOX_RELEASE}" "${TOOLBOX}" || {
 		log_fatal "maybe the toolbox already exists: try 'toolbox list' or './toolbox.sh enter'\n"
 	}
 	toolbox-prepare "${TOOLBOX}"
@@ -84,9 +86,7 @@ toolbox-create() {
 toolbox-enter() {
 	check_toolbox_is_not_empty
 	log_info "Entering to '${TOOLBOX}' toolbox"
-	toolbox enter "${TOOLBOX}" || {
-		log_fatal "ret=$? it seems the toolbox '${TOOLBOX}' does not exist: try toolbox list or './toolbox.sh create'"
-	}
+	exec toolbox enter "${TOOLBOX}"
 }
 
 # @brief Remove the toolbox.
@@ -95,9 +95,7 @@ toolbox-enter() {
 toolbox-rm() {
 	check_toolbox_is_not_empty
 	podman kill "${TOOLBOX}" || true
-	toolbox rm "${TOOLBOX}" || {
-		log_fatal "it seems the '${TOOLBOX}' does not exist: try toolbox list"
-	}
+	exec toolbox rm "${TOOLBOX}"
 }
 
 # @brief List the profiles available, which can be
@@ -180,13 +178,13 @@ Usage: ./toolbox.sh { help | install | profiles | create | prepare | enter | rm 
            script.
   install  Install wrapper at ~/bin or ~/.local/bin to call this script.
   profiles Enumerate all the profiles available.
-  create   Create the toolbox '$TOOLBOX' and install the required
+  create   Create the toolbox '\$TOOLBOX' and install the required
            dependencies on it.
-  prepare  It require the '$TOOLBOX' already exists. This re-run the
+  prepare  It require the '\$TOOLBOX' already exists. This re-run the
            preparation process.
-  enter    Enter into the toolbox '$TOOLBOX' so that you can start your
+  enter    Enter into the toolbox '\$TOOLBOX' so that you can start your
            experience in a ready environment.
-  rm       Delete the existing '$TOOLBOX' toolbox.
+  rm       Delete the existing '\$TOOLBOX' toolbox.
   localcfg Create a quick local profile 'toolbox.sh' to start to customize it.
 
 EOF
